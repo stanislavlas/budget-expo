@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Budget",
+    "slug": "budget-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1D9E75"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1D9E75"
+      },
+      "package": "com.yourname.budget",
+      "versionCode": 1
+    },
+    "platforms": ["android"],
+    "extra": {
+      "eas": {
+        "projectId": "your-eas-project-id"
+      }
+    }
+  }
+}
