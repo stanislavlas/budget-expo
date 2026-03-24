@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  localstack:
+    image: localstack/localstack:3
+    ports:
+      - "4565:4566"       # LocalStack gateway (changed to 4565)
+    environment:
+      - SERVICES=dynamodb
+      - DEFAULT_REGION=eu-central-1
+      - AWS_DEFAULT_REGION=eu-central-1
+    volumes:
+      - localstack_data:/var/lib/localstack
+volumes:
+  localstack_data:

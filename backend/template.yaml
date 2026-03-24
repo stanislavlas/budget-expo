@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  BudgetApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda.handler
+      Runtime: nodejs20.x
+      CodeUri: .
+      Timeout: 10
+      Environment:
+        Variables:
+          JWT_SECRET: local-dev-secret-32-chars-minimum
+          TABLE_USERS: budget_users
+          TABLE_TOKENS: budget_refresh_tokens
+          TABLE_ENTRIES: budget_entries
+          TABLE_HOUSEHOLDS: budget_households
+          TABLE_CATEGORIES: budget_categories
+          AWS_ENDPOINT_URL: http://host.docker.internal:4565
+      Events:
+        ApiProxy:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY

@@ -1,0 +1,18 @@
+{
+  "name": "budget-backend",
+  "version": "1.0.0",
+  "description": "Budget app Lambda backend",
+  "main": "lambda.js",
+  "type": "module",
+  "scripts": {
+    "start": "sam local start-api --port 3001 --warm-containers EAGER"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.700.0",
+    "@aws-sdk/lib-dynamodb": "^3.700.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {}
+}

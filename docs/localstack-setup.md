@@ -23,7 +23,7 @@ services:
   localstack:
     image: localstack/localstack:3
     ports:
-      - "4566:4566"       # LocalStack gateway (all services on one port)
+      - "4565:4566"       # LocalStack gateway (changed to port 4565)
     environment:
       - SERVICES=dynamodb
       - DEFAULT_REGION=eu-central-1
@@ -43,8 +43,8 @@ docker compose up -d
 Check it's healthy:
 
 ```bash
-curl http://localhost:4566/_localstack/health
-# Should show "dynamodb": "running"
+curl http://localhost:4565/_localstack/health
+# Should show "dynamodb": "available"
 ```
 
 ---
@@ -62,12 +62,12 @@ aws configure --profile localstack
 # Default output format: json
 ```
 
-All commands below use `--profile localstack --endpoint-url http://localhost:4566`.
+All commands below use `--profile localstack --endpoint-url http://localhost:4565`.
 You can alias this to save typing:
 
 ```bash
 # Add to your ~/.bashrc or ~/.zshrc
-alias awslocal='aws --profile localstack --endpoint-url http://localhost:4566'
+alias awslocal='aws --profile localstack --endpoint-url http://localhost:4565'
 ```
 
 Then reload: `source ~/.bashrc`
@@ -214,7 +214,7 @@ Resources:
           TABLE_ENTRIES: budget_entries
           TABLE_HOUSEHOLDS: budget_households
           TABLE_CATEGORIES: budget_categories
-          AWS_ENDPOINT_URL: http://host.docker.internal:4566
+          AWS_ENDPOINT_URL: http://host.docker.internal:4565
       Events:
         ApiProxy:
           Type: HttpApi
